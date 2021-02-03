@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+	xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<meta name="x-apple-disable-message-reformatting"> <!-- Disable auto-scale in iOS 10 Mail entirely -->
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+	<!-- CSS Reset : BEGIN -->
+	<style>
+		html,
+		body {
+			margin: 0 auto !important;
+			padding: 0 !important;
+			height: 100% !important;
+			width: 100% !important;
+			background: #f1f1f1;
+		}
+
+		/* What it does: Stops email clients resizing small text. */
+		* {
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		/* What it does: Centers email on Android 4.4 */
+		div[style*="margin: 16px 0"] {
+			margin: 0 !important;
+		}
+
+		/* What it does: Stops Outlook from adding extra spacing to tables. */
+		table,
+		td {
+			mso-table-lspace: 0pt !important;
+			mso-table-rspace: 0pt !important;
+		}
+
+		/* What it does: Fixes webkit padding issue. */
+		table {
+			border-spacing: 0 !important;
+			border-collapse: collapse !important;
+			table-layout: fixed !important;
+			margin: 0 auto !important;
+		}
+
+		/* What it does: Uses a better rendering method when resizing images in IE. */
+		img {
+			-ms-interpolation-mode: bicubic;
+		}
+
+		/* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+		a {
+			text-decoration: none;
+		}
+
+		/* What it does: A work-around for email clients meddling in triggered links. */
+		*[x-apple-data-detectors],
+		/* iOS */
+		.unstyle-auto-detected-links *,
+		.aBn {
+			border-bottom: 0 !important;
+			cursor: default !important;
+			color: inherit !important;
+			text-decoration: none !important;
+			font-size: inherit !important;
+			font-family: inherit !important;
+			font-weight: inherit !important;
+			line-height: inherit !important;
+		}
+
+		/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+		.a6S {
+			display: none !important;
+			opacity: 0.01 !important;
+		}
+
+		/* What it does: Prevents Gmail from changing the text color in conversation threads. */
+		.im {
+			color: inherit !important;
+		}
+
+		/* If the above doesn't work, add a .g-img class to any image in question. */
+		img.g-img+div {
+			display: none !important;
+		}
+
+		/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+		/* Create one of these media queries for each additional viewport size you'd like to fix */
+
+		/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+		@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+			u~div .email-container {
+				min-width: 320px !important;
+			}
+		}
+
+		/* iPhone 6, 6S, 7, 8, and X */
+		@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+			u~div .email-container {
+				min-width: 375px !important;
+			}
+		}
+
+		/* iPhone 6+, 7+, and 8+ */
+		@media only screen and (min-device-width: 414px) {
+			u~div .email-container {
+				min-width: 414px !important;
+			}
+		}
+	</style>
+
+	<!-- CSS Reset : END -->
+
+	<!-- Progressive Enhancements : BEGIN -->
+	<style>
+		.primary {
+			background: #0d0cb5;
+		}
+
+		.bg_white {
+			background: #ffffff;
+		}
+
+		.bg_light {
+			background: #fafafa;
+		}
+
+		.bg_black {
+			background: #000000;
+		}
+
+		.bg_dark {
+			background: rgba(0, 0, 0, .8);
+		}
+
+		.email-section {
+			padding: 2.5em;
+		}
+
+		/*BUTTON*/
+		.btn {
+			padding: 5px 15px;
+			display: inline-block;
+		}
+
+		.btn.btn-primary {
+			border-radius: 5px;
+			background: #0d0cb5;
+			color: #ffffff;
+		}
+
+		.btn.btn-white {
+			border-radius: 5px;
+			background: #ffffff;
+			color: #000000;
+		}
+
+		.btn.btn-white-outline {
+			border-radius: 5px;
+			background: transparent;
+			border: 1px solid #fff;
+			color: #fff;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: 'Poppins', sans-serif;
+			color: #000000;
+			margin-top: 0;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			font-weight: 400;
+			font-size: 15px;
+			line-height: 1.8;
+			color: rgba(0, 0, 0, .4);
+		}
+
+		a {
+			color: #0d0cb5;
+		}
+
+		table {}
+
+		/*LOGO*/
+
+		.logo h1 {
+			margin: 0;
+		}
+
+		.logo h1 a {
+			color: #000000;
+			font-size: 20px;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.navigation {
+			padding: 0;
+		}
+
+		.navigation li {
+			list-style: none;
+			display: inline-block;
+			;
+			margin-left: 5px;
+			font-size: 13px;
+			font-weight: 500;
+		}
+
+		.navigation li a {
+			color: rgba(0, 0, 0, .4);
+		}
+
+		/*HERO*/
+		.hero {
+			position: relative;
+			z-index: 0;
+		}
+
+		.hero .overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			width: 100%;
+			background: #000000;
+			z-index: -1;
+			opacity: .3;
+		}
+
+		.hero .icon {}
+
+		.hero .icon a {
+			display: block;
+			width: 60px;
+			margin: 0 auto;
+		}
+
+		.hero .text {
+			color: rgba(255, 255, 255, .8);
+		}
+
+		.hero .text h2 {
+			color: #ffffff;
+			font-size: 30px;
+			margin-bottom: 0;
+		}
+
+
+		/*HEADING SECTION*/
+		.heading-section {}
+
+		.heading-section h2 {
+			color: #000000;
+			font-size: 20px;
+			margin-top: 0;
+			line-height: 1.4;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.heading-section .subheading {
+			margin-bottom: 20px !important;
+			display: inline-block;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: rgba(0, 0, 0, .4);
+			position: relative;
+		}
+
+		.heading-section .subheading::after {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: -10px;
+			content: '';
+			width: 100%;
+			height: 2px;
+			background: #0d0cb5;
+			margin: 0 auto;
+		}
+
+		.heading-section-white {
+			color: rgba(255, 255, 255, .8);
+		}
+
+		.heading-section-white h2 {
+			line-height: 1;
+			padding-bottom: 0;
+		}
+
+		.heading-section-white h2 {
+			color: #ffffff;
+		}
+
+		.heading-section-white .subheading {
+			margin-bottom: 0;
+			display: inline-block;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: rgba(255, 255, 255, .4);
+		}
+
+
+		.icon {
+			text-align: center;
+		}
+
+		.icon img {}
+
+
+		/*SERVICES*/
+		.services {
+			background: rgba(0, 0, 0, .03);
+		}
+
+		.text-services {
+			padding: 10px 10px 0;
+			text-align: center;
+		}
+
+		.text-services h3 {
+			font-size: 16px;
+			font-weight: 600;
+		}
+
+		.services-list {
+			padding: 0;
+			margin: 0 0 20px 0;
+			width: 100%;
+			float: left;
+		}
+
+		.services-list img {
+			float: left;
+		}
+
+		.services-list .text {
+			width: calc(100% - 60px);
+			float: right;
+		}
+
+		.services-list h3 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.services-list p {
+			margin: 0;
+		}
+
+		/*BLOG*/
+		.text-services .meta {
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+
+		/*TESTIMONY*/
+		.text-testimony .name {
+			margin: 0;
+		}
+
+		.text-testimony .position {
+			color: rgba(0, 0, 0, .3);
+
+		}
+
+
+		/*VIDEO*/
+		.img {
+			width: 100%;
+			height: auto;
+			position: relative;
+		}
+
+		.img .icon {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin-top: -25px;
+		}
+
+		.img .icon a {
+			display: block;
+			width: 60px;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -25px;
+		}
+
+
+
+		/*COUNTER*/
+		.counter {
+			width: 100%;
+			position: relative;
+			z-index: 0;
+		}
+
+		.counter .overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			width: 100%;
+			background: #000000;
+			z-index: -1;
+			opacity: .3;
+		}
+
+		.counter-text {
+			text-align: center;
+		}
+
+		.counter-text .num {
+			display: block;
+			color: #feba35;
+			font-size: 34px;
+			font-weight: 700;
+		}
+
+		.counter-text .name {
+			display: block;
+			color: black;
+			font-size: 13px;
+		}
+
+
+		/*FOOTER*/
+
+		.footer {
+			color: rgba(255, 255, 255, .5);
+
+		}
+
+		.footer .heading {
+			color: #ffffff;
+			font-size: 20px;
+		}
+
+		.footer ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.footer ul li {
+			list-style: none;
+			margin-bottom: 10px;
+		}
+
+		.footer ul li a {
+			color: rgba(255, 255, 255, 1);
+		}
+
+
+		@media screen and (max-width: 500px) {
+
+			.icon {
+				text-align: left;
+			}
+
+			.text-services {
+				padding-left: 0;
+				padding-right: 20px;
+				text-align: left;
+			}
+
+		}
+	</style>
+
+
+</head>
+
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
+	<center style="width: 100%; background-color: #f1f1f1;">
+		<div
+			style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+			&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+		</div>
+		<div style="max-width: 600px; margin: 0 auto;" class="email-container">
+			<!-- BEGIN BODY -->
+			<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+				style="margin: auto;">
+				<tr>
+					<td valign="top" class="bg_light" style="padding: 1em 2.5em;">
+						<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tr>
+								<!-- <td width="40%" class="logo" style="text-align: left;">
+									<img src="https://drive.google.com/thumbnail?id=1uJLwD6Kwo_6HZg3FSaW_AzQOPvowYG6n" alt=""
+										style="width: 100%; max-width: 75px; height: 75px; margin: auto; display: block; float: left;">
+								</td> -->
+								<!-- <td width="60%" class="logo" style="text-align: right;">
+									<ul class="navigation">
+										<li><a href="https://www.instagram.com/britzoneid">BRITZONE ENGLISH
+												COMMUNITY</a></li>
+									</ul>
+								</td> -->
+							</tr>
+						</table>
+					</td>
+				</tr><!-- end tr -->
+				<tr>
+					<td valign="middle" class="bg_light"
+						style="background-image: url(https://drive.google.com/uc?id=1p-B4QtSX6ajDMckKHSCLrHkdVT12Lfe1); background-size: contain; height: 400px; background-repeat: no-repeat; background-position: center;">
+					</td>
+				</tr><!-- end tr -->
+				<tr>
+					<td class="bg_white hero">
+						<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+							<tr>
+								<td class="bg_light email-section">
+									<div class="heading-section"
+										style="text-align: center; padding: 0 25px; color: black;">
+										<!-- <h2>About us</h2> -->
+										<p><b>“Helping others in need is not only a responsibility of life; it is that
+												gives meaning to life. It can be a cure, not just for them, but for our
+												soul
+												as well."</b></p>
+
+										<p>Dearest Britzoners!
+											May this announcement find you well. Britzone is in collaboration with Aksi
+											Cepat Tanggap (ACT) in collecting charity and donation which aim to help and
+											support anyone affected by recent disasters across Indonesia.</p>
+										<p>Everyone’s welcomed to donate through a bank transfer to the following
+											Virtual Account:
+											<b>BNI Syariah 8660291021010159</b> a.n Aksi Cepat Tanggap
+										</p>
+										<p>
+											We really appreciate your kindness and contribution. May we are blessed in
+											safety and welfare.
+										</p>
+									</div>
+
+							<tr>
+								<td valign="middle" class="counter" style="padding: 4em 0; text-align: center;">
+									<h2 style="text-align: center;">BRITZONE IN A NUTSHELL</h2>
+									<p style="padding: 0 70px;">The Largest English Community in Jakarta where all people can join, connect, and have fun with our classes and events </p>
+									<table>
+										<tr>
+											<td valign="middle" width="33.333%">
+												<table role="presentation" cellspacing="0" cellpadding="0" border="0"
+													width="100%">
+													<tr>
+														<td class="counter-text">
+															<span class="num">2</span>
+															<span class="name">Branches</span>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td valign="middle" width="33.333%">
+												<table role="presentation" cellspacing="0" cellpadding="0" border="0"
+													width="100%">
+													<tr>
+														<td class="counter-text">
+															<span class="num">15+</span>
+															<span class="name">Years of running</span>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td valign="middle" width="33.333%">
+												<table role="presentation" cellspacing="0" cellpadding="0" border="0"
+													width="100%">
+													<tr>
+														<td class="counter-text">
+															<span class="num">16k</span>
+															<span class="name">Members</span>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr><!-- end tr -->
+					</td>
+				</tr><!-- end: tr -->
+
+				<tr>
+					<td class="bg_light email-section">
+						<div class="heading-section" style="text-align: center; padding: 0 30px;">
+							<h2>Our Activities</h2>
+							<p>To give our best contribution to the community, we provide three regular classes to help
+								member improve their english with informative topics and fun activities.</p>
+						</div>
+						<table role="presentation" border="0" cellpadding="10" cellspacing="0" width="100%">
+							<tr>
+								<td valign="top" width="33.333%" style="padding-top: 20px;">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td>
+												<img src="https://drive.google.com/uc?id=1iS9-Ogn6BSzr6WARhDuzT5TFZu1TEd6E"
+													alt=""
+													style="width: 100%; max-width: 600px; height: auto; margin: auto; margin-bottom: 20px; display: block;">
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="33.333%" style="padding-top: 20px;">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td>
+												<img src="https://drive.google.com/uc?id=18_B3FzDf7PyA8FtVCtlnK4ARyxEV9091"
+													alt=""
+													style="width: 100%; max-width: 600px; height: auto; margin: auto; margin-bottom: 20px; display: block;">
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="33.333%" style="padding-top: 20px;">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td>
+												<img src="https://drive.google.com/uc?id=1iBIv8KzpM5bbKnSTOu0f16dCV_2T4Y63"
+													alt=""
+													style="width: 100%; max-width: 600px; height: auto; margin: auto; margin-bottom: 20px; display: block;">
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr><!-- end: tr -->
+				<tr>
+					<td class="bg_white email-section" style="background-color: #feba35;">
+						<div class="heading-section" style="text-align: center; padding: 0 30px;">
+							<h2>Our Merchandise</h2>
+							<!-- <p>kata kata</p> -->
+						</div>
+						<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tr>
+
+								<td valign="top" width="100%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="padding-top: 20px; padding-left: 10px;">
+												<a href="https://www.instagram.com/p/CCTYvf8MopK/" target="_blank"><img
+														src="https://drive.google.com/uc?id=1Wh6y-bI4FhNc23dyYr3d8IEbkzP5kjY3"
+														alt=""
+														style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="100%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="padding-top: 20px; padding: 10px 0;">
+												<a href="https://www.instagram.com/p/CCTY3soMK9z/" target="_blank"><img
+														src="https://drive.google.com/uc?id=1a940N3LmbRM5vZxQSqcQXwr7A-umZkeP"
+														alt=""
+														style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="100%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="padding-top: 20px; padding-right: 10px;">
+												<a href="https://www.instagram.com/p/CCTYiQHsl0e/" target="_blank"><img
+														src="https://drive.google.com/uc?id=1vtxv0mirpZlkHDGOm0Ei7bdUDXYhvcN6"
+														alt=""
+														style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="50%">
+							<tr>
+								<td valign="top" width="50%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="padding-top: 20px; padding-right: 10px;">
+												<a href="https://www.instagram.com/p/CCTYiQHsl0e/" target="_blank"><img src="images/lanyard.png" alt=""
+														style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="50%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="padding-top: 20px; padding-left: 10px;">
+												<a href="https://www.instagram.com/britzonemerch/" target="_blank"><img src="images/work-4.jpg" alt=""
+														style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;"></a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table> -->
+						<div class="heading-section" style="text-align: center; padding: 0 70px;">
+							<p style="color:black">For more products, reach our instagram at <a
+									href="https://www.instagram.com/britzonemerch/" target="_blank"
+									rel="noopener noreferrer">@britzonemerch</a></p>
+						</div>
+					</td>
+				</tr><!-- end: tr -->
+			</table>
+
+			</td>
+			</tr><!-- end:tr -->
+			<!-- 1 Column Text + Button : END -->
+			</table>
+			<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+				style="margin: 20px 20px;">
+				<tr>
+					<td valign="middle" class="bg_black footer email-section">
+						<table>
+							<tr>
+								<td valign="top" width="66.666%" style="padding-top: 20px;">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="text-align: left; padding-right: 10px;">
+												<h3 class="heading">About</h3>
+												<p>BRITZONE is the biggest English community in Jakarta</p>
+													<p>&copy; 2021 Britzone ID</p>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td valign="top" width="33.333%" style="padding-top: 20px;">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="text-align: left; padding-left: 10px;">
+												<h3 class="heading">Site map</h3>
+												<ul>
+													<li><a href="https://www.instagram.com/britzoneid/"
+															target="_blank">Instagram</a></li>
+													<li><a href="https://twitter.com/britzoneid"
+															target="_blank">Twitter</a></li>
+													<li><a href="https://www.facebook.com/britzoneid"
+															target="_blank">Facebook</a></li>
+													<li><a href="https://www.youtube.com/channel/UCDHHxvqH3XK3qWEuh6Jwd6w"
+															target="_blank">Youtube</a></li>
+													<li><a href="https://open.spotify.com/show/0EzS1KNBJQZlieI8k7gzAt"
+															target="_blank">Spotify</a></li>
+													<li><a href="https://britzone.id" target="_blank">Website</a></li>
+												</ul>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr><!-- end: tr -->
+				<!-- <tr>
+					<td valign="middle" class="bg_black footer email-section">
+						<table>
+							<tr>
+								<td valign="top" width="33.333%">
+									<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+										<tr>
+											<td style="text-align: left; padding-right: 10px;">
+												<p>&copy; 2021 Britzone ID</p>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr> -->
+			</table>
+		</div>
+	</center>
+</body>
+
+</html>
